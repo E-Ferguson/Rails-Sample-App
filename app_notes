@@ -1,4 +1,13 @@
 
+
+
+
+To do:
+	--read about deployment
+
+
+Anything to do with a path means the routing file
+
 REST Actions: GET, POST, PUT, DESTROY
 
 Section 6.1.1
@@ -48,18 +57,114 @@ Section 7.3.1--A working form:
 		--note the use of render in listing 7.22--it directs to shared/error_messages
 		
 		
+
 		
 Section 7.4.2
 
 	--Code for the flash stored in application.html.erb
 
 
+Section 8.1
+
+	--Pertaining to sessions:
+		It’s convenient to model sessions as a RESTful resource: we’ll have a signin page for new sessions, 
+		signing in will create a session, and signing out will destroy it. 
+		
+	-->8.1.1
+	
+		--Another useful quote:
+			The elements of signing in and out correspond to particular REST actions of the 
+			Sessions controller: the signin form is handled by the new action (covered in this section), 
+			actually signing in is handled by sending a POST request to the create action 
+			(Section 8.1 and Section 8.2), and signing out is handled by sending a DELETE request to 
+			the destroy action (Section 8.2.6). 
 
 
 
 
+Section 8.1.3
+
+	-- Like signing up, we are still using the form_for function to display the form.
+		With the sesssions controller since we don't have a corresponding model, we need to explicitly
+		pass the name of the resource and the URI to the form_for function.
 
 
 
+Section 8.14
 
+
+	-params contains a hash within a hash:  { session: { password: "", email: "" } }
+
+
+Section 8.2.1
+	
+	--Including a module in the application controller makes that module available throughout 
+	  the application for all controllers.
+	  
+	--HTTP Stateless, therefore use a remember token equal to the user id to remember them. 
+	
+	--We will use a remember token so that user login is persistent.
+
+
+	--Callback methods execute at specific times in the lifetime of an ActiveRecord object.   
+		before_save happens before data is saved to database.
+
+
+Section 8.2.2
+
+	--note the use of a helper to execute the code
+
+	--Cookies themselves are really like hashes with two members:  a value and an expiration date
+
+
+Section 8.2.3
+
+	--function current_user=() lets us know that this function is solely for the purpose of assigning
+	current user
+	
+	
+	
+Section 8.2.4
+
+	--Note how the layout links are changed based upon whether the user is signed in or not in 
+	  _header.html.erb
+
+
+
+Section 9.1.1
+
+	--Rails can tell when it should use a POST request for new users versus a PUT request by using
+	  Active Record's new_record? boolean method. 
+	  
+
+Section 9.2.1
+
+	--Use before filter to arrange for a particular method to be called before given actions.  In
+	  our case, we use a before filter for signed in users before editing or updating. 
+	  
+	  
+	  
+	  
+Section 9.2.2
+	  
+	  --another before filter with to ensure that the correct user is updating their profile info
+	  
+	  
+	  
+	  
+	  
+Section 9.4.1
+
+	-- Administrative users defined with boolean
+	
+	-- We turn the admin feature on/off with the toggle! command.  This is because it is not(and should
+	   not be) an attr_accessible field. 
+	  
+	  
+	-- Note that we use another before_filter to check that the user is an admin before we allow the 
+	   destroy action. 
+
+	  
+	  
+	  
 
